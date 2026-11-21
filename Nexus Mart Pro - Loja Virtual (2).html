@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="obsidian">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Mart Pro — Loja Virtual Autônoma & Split PIX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="obsidian"] {
+      --bg-base: #060913;
+      --bg-surface: rgba(15, 23, 42, 0.78);
+      --bg-card: rgba(17, 25, 46, 0.88);
+      --bg-elevated: rgba(30, 41, 59, 0.75);
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-1: #6366f1;
+      --accent-2: #06b6d4;
+      --accent-3: #10b981;
+      --mesh-1: rgba(99, 102, 241, 0.22);
+      --mesh-2: rgba(6, 182, 212, 0.16);
+      --logo-start: #6366f1;
+      --logo-end: #06b6d4;
+    }
+
+    [data-theme="gold"] {
+      --bg-base: #0a0908;
+      --bg-surface: rgba(24, 21, 18, 0.85);
+      --bg-card: rgba(30, 26, 21, 0.9);
+      --bg-elevated: rgba(45, 39, 31, 0.8);
+      --border-subtle: rgba(245, 158, 11, 0.22);
+      --text-primary: #fafaf9;
+      --text-secondary: #a8a29e;
+      --accent-1: #f59e0b;
+      --accent-2: #eab308;
+      --accent-3: #10b981;
+      --mesh-1: rgba(245, 158, 11, 0.2);
+      --mesh-2: rgba(217, 119, 6, 0.14);
+      --logo-start: #f59e0b;
+      --logo-end: #fde047;
+    }
+
+    [data-theme="arctic"] {
+      --bg-base: #f1f5f9;
+      --bg-surface: rgba(255, 255, 255, 0.88);
+      --bg-card: rgba(255, 255, 255, 0.96);
+      --bg-elevated: rgba(241, 245, 249, 0.95);
+      --border-subtle: rgba(15, 23, 42, 0.1);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent-1: #4f46e5;
+      --accent-2: #0284c7;
+      --accent-3: #059669;
+      --mesh-1: rgba(79, 70, 229, 0.12);
+      --mesh-2: rgba(2, 132, 199, 0.1);
+      --logo-start: #4f46e5;
+      --logo-end: #0284c7;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      background-image:
+        radial-gradient(circle at 12% 8%, var(--mesh-1), transparent 42%),
+        radial-gradient(circle at 88% 15%, var(--mesh-2), transparent 40%);
+      background-attachment: fixed;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .glass-panel {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-1);
+      box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.45);
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #ffffff;
+    }
+    .btn-gradient:hover { filter: brightness(1.08); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP BAR -->
+  <div class="text-xs py-2 px-4 text-center font-medium border-b" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-secondary);">
+    <span class="inline-flex items-center gap-2 flex-wrap justify-center">
+      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold text-white" style="background: var(--accent-3);">SPLIT PIX ATIVO</span>
+      <span>Preços auditados e alinhados ao varejo nacional • Frete Grátis acima de R$ 199 • Use o cupom <strong style="color: var(--accent-2);">NEXUS10</strong></span>
+    </span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 glass-panel border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      <!-- LOGO -->
+      <a href="#" onclick="resetFilters()" class="flex items-center gap-3 shrink-0 group">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden" style="background: linear-gradient(135deg, var(--logo-start), var(--logo-end));">
+          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke="currentColor" stroke-width="2" fill="rgba(255,255,255,0.12)"/>
+            <path d="M8 15V9L16 15V9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display font-extrabold text-xl tracking-tight">NEXUS MART</span>
+            <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PRO</span>
+          </div>
+          <p class="text-[11px]" style="color: var(--text-secondary);">E-commerce Autônomo &amp; Split</p>
+        </div>
+      </a>
+
+      <!-- SEARCH -->
+      <div class="hidden md:flex flex-1 max-w-md relative">
+        <input id="searchInput" type="text" oninput="renderProducts()" placeholder="Buscar eletrônicos, cursos, skincare, setup..."
+          class="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm outline-none border transition"
+          style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+        <svg class="w-4 h-4 absolute left-3.5 top-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z"/>
+        </svg>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <!-- THEME SWITCHER -->
+        <div class="flex items-center p-1 rounded-xl border" style="background: var(--bg-elevated); border-color: var(--border-subtle);" title="Trocar Tema">
+          <button onclick="setTheme('obsidian')" class="w-6 h-6 rounded-lg bg-indigo-600 border border-white/20 hover:scale-105 transition" title="Cyber Obsidian"></button>
+          <button onclick="setTheme('gold')" class="w-6 h-6 rounded-lg bg-amber-500 border border-white/20 mx-1 hover:scale-105 transition" title="Royal Gold"></button>
+          <button onclick="setTheme('arctic')" class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-400 hover:scale-105 transition" title="Arctic Light"></button>
+        </div>
+
+        <button onclick="openModal('aiModal')" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold border flex items-center gap-1.5 hover:opacity-90 transition" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <span>🤖</span><span class="hidden sm:inline">IA &amp; Logística</span>
+        </button>
+
+        <button onclick="openModal('splitModal')" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold border flex items-center gap-1.5 hover:opacity-90 transition" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <span>💸</span><span class="hidden sm:inline">Split PIX</span>
+        </button>
+
+        <button onclick="openModal('ordersModal')" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold border flex items-center gap-1.5 hover:opacity-90 transition" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <span>📦</span><span class="hidden lg:inline">Pedidos</span>
+          <span id="orderBadge" class="px-1.5 py-0.2 rounded-full text-[11px] bg-emerald-500/20 text-emerald-400 font-bold">1</span>
+        </button>
+
+        <button onclick="toggleCart(true)" class="btn-gradient px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-lg">
+          <span>🛒</span>
+          <span id="cartCount" class="bg-black/25 px-2 py-0.5 rounded-full text-xs">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE SEARCH -->
+    <div class="md:hidden px-4 pb-3">
+      <input id="searchInputMobile" type="text" oninput="syncSearch(this.value)" placeholder="Buscar produtos, cursos ou serviços..."
+        class="w-full px-4 py-2 rounded-xl text-sm outline-none border"
+        style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-4 w-full">
+    <div class="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative overflow-hidden">
+      <div class="max-w-2xl z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-3 border" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--accent-2);">
+          <span>⚡ Auditoria de Mercado + Entrega Garantida</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-3">
+          Tudo o que vende na internet, com <span style="color: var(--accent-2);">preços reais</span> e <span style="color: var(--accent-3);">Split PIX automático</span>.
+        </h1>
+        <p class="text-sm sm:text-base mb-5" style="color: var(--text-secondary);">
+          Produtos físicos com rastreio imediato, infoprodutos com download instantâneo, assistente IA que aciona transportadoras e repasse automático entre fornecedor e criador.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <button onclick="openModal('aiModal'); runPriceAudit();" class="btn-gradient px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg">
+            🔍 Auditar Preços com IA
+          </button>
+          <button onclick="openModal('splitModal')" class="px-5 py-2.5 rounded-xl text-sm font-bold border" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+            💰 Ver Painel de Lucro &amp; Split
+          </button>
+        </div>
+      </div>
+
+      <!-- MINI LIVE METRICS -->
+      <div class="grid grid-cols-2 gap-3 w-full lg:w-auto shrink-0 z-10">
+        <div class="p-4 rounded-2xl border" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <p class="text-xs" style="color: var(--text-secondary);">Seu Lucro Líquido</p>
+          <p id="heroCreatorProfit" class="text-xl sm:text-2xl font-extrabold text-emerald-400 mt-1">R$ 159,00</p>
+          <p class="text-[11px] mt-1" style="color: var(--text-secondary);">PIX: 154.527.589-09</p>
+        </div>
+        <div class="p-4 rounded-2xl border" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <p class="text-xs" style="color: var(--text-secondary);">Repasse Fornecedores</p>
+          <p id="heroSupplierPaid" class="text-xl sm:text-2xl font-extrabold mt-1" style="color: var(--accent-2);">R$ 340,00</p>
+          <p class="text-[11px] mt-1" style="color: var(--text-secondary);">Liquidação Automática</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTERS & SORT -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-3 w-full flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+    <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+      <button onclick="setCategory('Todos')" class="cat-btn active px-4 py-2 rounded-xl text-xs font-bold shrink-0 btn-gradient" data-cat="Todos">Todos (12)</button>
+      <button onclick="setCategory('Eletrônicos')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Eletrônicos">🎧 Eletrônicos</button>
+      <button onclick="setCategory('Setup & Casa')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Setup & Casa">💡 Setup &amp; Casa</button>
+      <button onclick="setCategory('Moda & Acessórios')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Moda & Acessórios">🎒 Moda &amp; Acessórios</button>
+      <button onclick="setCategory('Beleza & Skincare')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Beleza & Skincare">✨ Beleza &amp; Skincare</button>
+      <button onclick="setCategory('Infoprodutos')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Infoprodutos">🎓 Cursos &amp; Digital</button>
+      <button onclick="setCategory('Serviços')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold shrink-0 border" style="background: var(--bg-surface); border-color: var(--border-subtle);" data-cat="Serviços">⚡ Serviços &amp; Apps</button>
+    </div>
+
+    <select id="sortSelect" onchange="renderProducts()" class="px-3.5 py-2 rounded-xl text-xs font-semibold border outline-none" style="background: var(--bg-surface); border-color: var(--border-subtle); color: var(--text-primary);">
+      <option value="featured">Ordenar: Destaques Auditados</option>
+      <option value="price-asc">Menor Preço</option>
+      <option value="price-desc">Maior Preço</option>
+    </select>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex-1 w-full">
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+  </main>
+
+  <!-- CART DRAWER -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/65 backdrop-blur-sm" onclick="toggleCart(false)"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-md glass-panel border-l flex flex-col p-5 shadow-2xl" style="background: var(--bg-base);">
+      <div class="flex items-center justify-between pb-4 border-b" style="border-color: var(--border-subtle);">
+        <h2 class="text-lg font-extrabold flex items-center gap-2">🛒 Seu Carrinho</h2>
+        <button onclick="toggleCart(false)" class="p-2 rounded-lg border text-xs font-bold" style="border-color: var(--border-subtle);">✕</button>
+      </div>
+
+      <div id="cartItems" class="flex-1 overflow-y-auto py-4 space-y-3"></div>
+
+      <!-- COUPON -->
+      <div class="pt-3 border-t space-y-3" style="border-color: var(--border-subtle);">
+        <div class="flex gap-2">
+          <input id="couponInput" type="text" placeholder="Cupom (ex: NEXUS10)" class="flex-1 px-3 py-2 rounded-xl text-xs border outline-none uppercase" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+          <button onclick="applyCoupon()" class="px-4 py-2 rounded-xl text-xs font-bold border" style="background: var(--bg-elevated); border-color: var(--border-subtle);">Aplicar</button>
+        </div>
+        <p id="couponMsg" class="text-xs text-emerald-400 hidden"></p>
+
+        <div class="space-y-1.5 text-xs" style="color: var(--text-secondary);">
+          <div class="flex justify-between"><span>Subtotal</span><span id="cartSubtotal">R$ 0,00</span></div>
+          <div class="flex justify-between"><span>Frete</span><span id="cartShipping">Grátis</span></div>
+          <div id="discountRow" class="flex justify-between text-emerald-400 hidden"><span>Desconto Cupom</span><span id="cartDiscount">- R$ 0,00</span></div>
+          <div class="flex justify-between text-base font-extrabold pt-2 border-t" style="border-color: var(--border-subtle); color: var(--text-primary);">
+            <span>Total</span><span id="cartTotal">R$ 0,00</span>
+          </div>
+          <p class="text-[11px] text-emerald-400">Pagando no PIX você ganha +5% de desconto extra na hora!</p>
+        </div>
+
+        <button onclick="openCheckout()" class="w-full btn-gradient py-3 rounded-xl font-bold text-sm shadow-lg">
+          Finalizar Compra com Garantia →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-3xl p-6 border shadow-2xl max-h-[92vh] overflow-y-auto" style="background: var(--bg-base); border-color: var(--border-subtle);">
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--border-subtle);">
+        <h3 class="text-lg font-extrabold">🔒 Checkout Seguro &amp; Split Automático</h3>
+        <button onclick="closeModal('checkoutModal')" class="px-2.5 py-1 rounded-lg border text-xs">✕</button>
+      </div>
+
+      <div id="checkoutBody" class="mt-4 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-semibold block mb-1">Seu Nome Completo</label>
+            <input id="custName" type="text" value="Cliente Nexus" class="w-full px-3 py-2 rounded-xl text-xs border" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold block mb-1">E-mail para Rastreio / Download</label>
+            <input id="custEmail" type="email" value="cliente@email.com" class="w-full px-3 py-2 rounded-xl text-xs border" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold block mb-1.5">Forma de Pagamento</label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button id="payPixBtn" onclick="selectPayMethod('PIX')" class="p-3 rounded-xl border text-left text-xs font-bold border-emerald-500 bg-emerald-500/10">
+              ⚡ PIX Instantâneo (-5%)<br><span class="font-normal opacity-75">Aprovação &amp; Split em 3s</span>
+            </button>
+            <button id="payCardBtn" onclick="selectPayMethod('CARD')" class="p-3 rounded-xl border text-left text-xs font-bold" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+              💳 Cartão de Crédito<br><span class="font-normal opacity-75">Até 12x sem juros</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="pixBox" class="p-4 rounded-2xl border space-y-2.5" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400">Chave PIX Oficial Recebedora:</span>
+            <button onclick="copyPixKey()" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Copiar Chave</button>
+          </div>
+          <p class="font-mono text-sm font-bold" id="checkoutPixKeyDisplay">154.527.589-09</p>
+          <p class="text-[11px]" style="color: var(--text-secondary);">
+            Ao confirmar, o motor financeiro repassa automaticamente o custo ao fornecedor e envia seu lucro líquido para a chave acima, liberando o rastreio/download ao comprador.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl border flex items-center justify-between" style="background: var(--bg-surface); border-color: var(--border-subtle);">
+          <span class="text-xs font-semibold">Valor Final a Pagar:</span>
+          <span id="checkoutFinalAmount" class="text-xl font-extrabold text-emerald-400">R$ 0,00</span>
+        </div>
+
+        <button onclick="confirmOrder()" class="w-full btn-gradient py-3.5 rounded-xl font-extrabold text-sm shadow-lg">
+          ✅ Confirmar Pagamento &amp; Liberar Entrega
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI & LOGISTICS MODAL -->
+  <div id="aiModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="w-full max-w-2xl rounded-3xl p-6 border shadow-2xl flex flex-col max-h-[90vh]" style="background: var(--bg-base); border-color: var(--border-subtle);">
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--border-subtle);">
+        <div>
+          <h3 class="text-lg font-extrabold flex items-center gap-2">🤖 Nexus AI Core — Gestor &amp; Logística Autônoma</h3>
+          <p class="text-xs" style="color: var(--text-secondary);">Auditoria de preços, atendimento ao cliente e acionamento direto de transportadoras</p>
+        </div>
+        <button onclick="closeModal('aiModal')" class="px-2.5 py-1 rounded-lg border text-xs">✕</button>
+      </div>
+
+      <!-- QUICK AI ACTIONS -->
+      <div class="flex flex-wrap gap-2 py-3 border-b" style="border-color: var(--border-subtle);">
+        <button onclick="runPriceAudit()" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">🔍 Auditar &amp; Alinhar Preços</button>
+        <button onclick="contactCarrier('atraso')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">🚚 Cobrar Transportadora (Atraso)</button>
+        <button onclick="contactCarrier('reembolso')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🔄 Troca / Reembolso / Digital</button>
+        <button onclick="autoAddProduct()" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">➕ Criar Novo Produto IA</button>
+      </div>
+
+      <!-- CHAT LOG -->
+      <div id="aiChatBox" class="flex-1 overflow-y-auto py-4 space-y-3 text-xs leading-relaxed min-h-[240px]">
+        <div class="p-3.5 rounded-2xl border" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <strong class="text-cyan-400">Nexus AI:</strong> Olá! Estou monitorando os 12 produtos da loja, os repasses via Split PIX e todas as entregas pelos Correios SEDEX, Jadlog e Loggi. Como posso ajudar agora?
+        </div>
+      </div>
+
+      <!-- INPUT -->
+      <div class="pt-3 border-t flex gap-2" style="border-color: var(--border-subtle);">
+        <input id="aiUserInput" type="text" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="Ex: Cobrar transportadora do pedido NX-1001 ou auditar preços..."
+          class="flex-1 px-4 py-2.5 rounded-xl text-xs border outline-none"
+          style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-primary);" />
+        <button onclick="sendAiMessage()" class="btn-gradient px-4 py-2.5 rounded-xl text-xs font-bold">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPLIT PIX & CREATOR PROFIT MODAL -->
+  <div id="splitModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="w-full max-w-2xl rounded-3xl p-6 border shadow-2xl max-h-[90vh] overflow-y-auto" style="background: var(--bg-base); border-color: var(--border-subtle);">
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--border-subtle);">
+        <div>
+          <h3 class="text-lg font-extrabold">💸 Motor de Split PIX — Fornecedor &amp; Criador</h3>
+          <p class="text-xs" style="color: var(--text-secondary);">Divisão automática de cada venda entre o fornecedor do produto e o seu lucro</p>
+        </div>
+        <button onclick="closeModal('splitModal')" class="px-2.5 py-1 rounded-lg border text-xs">✕</button>
+      </div>
+
+      <div class="mt-4 space-y-4">
+        <!-- CREATOR PIX CONFIG -->
+        <div class="p-4 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <div>
+            <p class="text-xs font-bold text-emerald-400">Sua Chave PIX (Criador / Dono da Loja)</p>
+            <input id="creatorPixInput" type="text" value="154.527.589-09" onchange="updateCreatorPix(this.value)"
+              class="mt-1 px-3 py-1.5 rounded-lg text-sm font-mono font-bold border outline-none"
+              style="background: var(--bg-base); border-color: var(--border-subtle); color: var(--text-primary);" />
+          </div>
+          <button onclick="simulateSplitSale()" class="btn-gradient px-4 py-2.5 rounded-xl text-xs font-bold shrink-0">
+            ⚡ Simular Nova Venda com Split
+          </button>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-2xl border" style="background: var(--bg-surface); border-color: var(--border-subtle);">
+            <p class="text-[11px]" style="color: var(--text-secondary);">Faturamento Bruto</p>
+            <p id="splitGrossTotal" class="text-base sm:text-lg font-extrabold mt-1">R$ 499,00</p>
+          </div>
+          <div class="p-3.5 rounded-2xl border" style="background: var(--bg-surface); border-color: var(--border-subtle);">
+            <p class="text-[11px]" style="color: var(--text-secondary);">Pago Fornecedores</p>
+            <p id="splitSupplierTotal" class="text-base sm:text-lg font-extrabold text-cyan-400 mt-1">R$ 340,00</p>
+          </div>
+          <div class="p-3.5 rounded-2xl border" style="background: var(--bg-surface); border-color: var(--border-subtle);">
+            <p class="text-[11px]" style="color: var(--text-secondary);">Seu Lucro Líquido</p>
+            <p id="splitCreatorTotal" class="text-base sm:text-lg font-extrabold text-emerald-400 mt-1">R$ 159,00</p>
+          </div>
+        </div>
+
+        <!-- LEDGER -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--text-secondary);">Extrato de Liquidações Automáticas</h4>
+          <div id="splitLedger" class="space-y-2.5 text-xs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDERS & DELIVERY PROOF MODAL -->
+  <div id="ordersModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="w-full max-w-2xl rounded-3xl p-6 border shadow-2xl max-h-[90vh] overflow-y-auto" style="background: var(--bg-base); border-color: var(--border-subtle);">
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--border-subtle);">
+        <div>
+          <h3 class="text-lg font-extrabold">📦 Meus Pedidos &amp; Comprovantes de Entrega</h3>
+          <p class="text-xs" style="color: var(--text-secondary);">Rastreamento físico em tempo real e acesso imediato a produtos digitais</p>
+        </div>
+        <button onclick="closeModal('ordersModal')" class="px-2.5 py-1 rounded-lg border text-xs">✕</button>
+      </div>
+      <div id="ordersList" class="mt-4 space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING AI BUTTON -->
+  <button onclick="openModal('aiModal')" class="fixed bottom-5 right-5 z-40 btn-gradient px-4 py-3 rounded-full shadow-2xl font-bold text-xs flex items-center gap-2 hover:scale-105 transition">
+    <span>🤖</span><span>Suporte IA &amp; Entregas</span>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 border-t py-6 px-4 text-center text-xs" style="border-color: var(--border-subtle); color: var(--text-secondary);">
+    <p class="font-bold" style="color: var(--text-primary);">NEXUS MART PRO — E-commerce Híbrido com Split PIX &amp; Logística IA</p>
+    <p class="mt-1">Chave PIX Oficial: 154.527.589-09 • Pagamentos protegidos com comprovação instantânea de envio e download.</p>
+  </footer>
+
+  <script>
+    let creatorPixKey = "154.527.589-09";
+    let currentCategory = "Todos";
+    let appliedCoupon = null;
+    let selectedPayMethod = "PIX";
+    let cart = [];
+
+    const products = [
+      {
+        id: 1,
+        name: "Fone Bluetooth Edifier W820NB Plus ANC",
+        category: "Eletrônicos",
+        type: "physical",
+        price: 499.00,
+        supplierCost: 340.00,
+        supplierName: "Edifier Oficial BR",
+        carrier: "Correios SEDEX",
+        marketRef: "Loja Edifier: R$ 499,00",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+        badge: "Preço Igual Oficial"
+      },
+      {
+        id: 2,
+        name: "Smartwatch Huawei Watch Fit 5 AMOLED GPS",
+        category: "Eletrônicos",
+        type: "physical",
+        price: 779.90,
+        supplierCost: 545.00,
+        supplierName: "Distribuidora TechBR",
+        carrier: "Jadlog Express",
+        marketRef: "KaBuM!: R$ 770 – R$ 882",
+        image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=600&q=80",
+        badge: "Auditado"
+      },
+      {
+        id: 3,
+        name: "Teclado Mecânico Sem Fio Logitech G915 X RGB",
+        category: "Eletrônicos",
+        type: "physical",
+        price: 1349.90,
+        supplierCost: 960.00,
+        supplierName: "Logitech Partner BR",
+        carrier: "Loggi Air",
+        marketRef: "Amazon BR: R$ 1.349,91",
+        image: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=600&q=80",
+        badge: "Top Gamer"
+      },
+      {
+        id: 4,
+        name: "Mouse Vertical Ergonômico Logitech Lift",
+        category: "Eletrônicos",
+        type: "physical",
+        price: 341.90,
+        supplierCost: 235.00,
+        supplierName: "Logitech Partner BR",
+        carrier: "Correios SEDEX",
+        marketRef: "Amazon BR: R$ 341,91",
+        image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=600&q=80",
+        badge: "Ergonomia 57°"
+      },
+      {
+        id: 5,
+        name: "Luminária de Mesa LED Marah 3 Temperaturas",
+        category: "Setup & Casa",
+        type: "physical",
+        price: 136.90,
+        supplierCost: 84.00,
+        supplierName: "LED Tube Iluminação",
+        carrier: "Total Express",
+        marketRef: "Varejo: R$ 134 – R$ 139",
+        image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+        badge: "Setup Clean"
+      },
+      {
+        id: 6,
+        name: "Kit Fita LED RGBIC Inteligente Wi-Fi & Alexa",
+        category: "Setup & Casa",
+        type: "physical",
+        price: 159.90,
+        supplierCost: 95.00,
+        supplierName: "SmartHome Atacado",
+        carrier: "Loggi Air",
+        marketRef: "Mercado Livre: R$ 164,90",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
+        badge: "Abaixo do Mercado"
+      },
+      {
+        id: 7,
+        name: "Mochila Executiva Impermeável Notebook 17"",
+        category: "Moda & Acessórios",
+        type: "physical",
+        price: 197.90,
+        supplierCost: 122.00,
+        supplierName: "Casualle Brasil",
+        carrier: "Jadlog Express",
+        marketRef: "Alleganza: R$ 197,91",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
+        badge: "Impermeável 50L"
+      },
+      {
+        id: 8,
+        name: "Kit Skincare Principia Rotina Completa (GL-02 + AH-2 + PS-01)",
+        category: "Beleza & Skincare",
+        type: "physical",
+        price: 139.90,
+        supplierCost: 89.00,
+        supplierName: "Dermocosméticos BR",
+        carrier: "Correios SEDEX",
+        marketRef: "Farmácias: R$ 133 – R$ 162",
+        image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=600&q=80",
+        badge: "Anvisa OK"
+      },
+      {
+        id: 9,
+        name: "Curso Completo: Criando Lojas Web & Apps com IA",
+        category: "Infoprodutos",
+        type: "digital",
+        price: 147.00,
+        supplierCost: 15.00,
+        supplierName: "Plataforma Nexus Academy",
+        carrier: "Entrega Digital Instantânea",
+        marketRef: "Hotmart/Kiwify: R$ 197,00",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+        badge: "89% Margem"
+      },
+      {
+        id: 10,
+        name: "Pack 500 Beats & Stems Musicais IA (Licença Comercial)",
+        category: "Infoprodutos",
+        type: "digital",
+        price: 79.90,
+        supplierCost: 8.00,
+        supplierName: "Nexus Audio Cloud",
+        carrier: "Download Direto ZIP",
+        marketRef: "BeatStars: R$ 120,00",
+        image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80",
+        badge: "Acesso Imediato"
+      },
+      {
+        id: 11,
+        name: "Criação de Landing Page de Alta Conversão (48h)",
+        category: "Serviços",
+        type: "digital",
+        price: 297.00,
+        supplierCost: 40.00,
+        supplierName: "Infra & Hospedagem",
+        carrier: "Ativação via Painel",
+        marketRef: "Agências: R$ 600+",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+        badge: "Serviço Express"
+      },
+      {
+        id: 12,
+        name: "Pacote Automação WhatsApp & IA para Vendas",
+        category: "Serviços",
+        type: "digital",
+        price: 197.00,
+        supplierCost: 29.00,
+        supplierName: "API Gateway Cloud",
+        carrier: "Chave de Licença Imediata",
+        marketRef: "SaaS Mercado: R$ 249/mês",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80",
+        badge: "IA Autônoma"
+      }
+    ];
+
+    let orders = [
+      {
+        id: "NX-1001",
+        date: "Hoje, 13:40",
+        customer: "Cliente Demonstração",
+        total: 499.00,
+        method: "PIX Instantâneo",
+        status: "Em Trânsito • Postado",
+        carrier: "Correios SEDEX",
+        tracking: "BR849201948BR",
+        items: ["Fone Bluetooth Edifier W820NB Plus ANC"],
+        hasDigital: false,
+        carrierNotes: "Objeto encaminhado para unidade de distribuição local."
+      }
+    ];
+
+    let splitHistory = [
+      {
+        orderId: "NX-1001",
+        item: "Fone Bluetooth Edifier W820NB Plus ANC",
+        gross: 499.00,
+        supplierPaid: 340.00,
+        supplierName: "Edifier Oficial BR",
+        creatorProfit: 159.00,
+        txId: "PIX-SPLIT-982341"
+      }
+    ];
+
+    function formatBRL(v) {
+      return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll(".cat-btn").forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.classList.add("btn-gradient");
+          btn.style.background = "";
+        } else {
+          btn.classList.remove("btn-gradient");
+          btn.style.background = "var(--bg-surface)";
+        }
+      });
+      renderProducts();
+    }
+
+    function resetFilters() {
+      document.getElementById("searchInput").value = "";
+      document.getElementById("searchInputMobile").value = "";
+      setCategory("Todos");
+    }
+
+    function syncSearch(val) {
+      document.getElementById("searchInput").value = val;
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const q = (document.getElementById("searchInput").value || "").toLowerCase();
+      const sort = document.getElementById("sortSelect").value;
+
+      let filtered = products.filter(p => {
+        const matchCat = currentCategory === "Todos" || p.category === currentCategory;
+        const matchQ = p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      if (sort === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      if (sort === "price-desc") filtered.sort((a, b) => b.price - a.price);
+
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = filtered.map(p => {
+        const profit = p.price - p.supplierCost;
+        return `
+          <div class="product-card rounded-2xl overflow-hidden flex flex-col">
+            <div class="relative h-48 overflow-hidden bg-slate-900">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-black/70 text-white backdrop-blur-md border border-white/15">
+                ${p.badge}
+              </span>
+              <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md text-[10px] font-bold ${p.type === 'digital' ? 'bg-cyan-500/90 text-slate-950' : 'bg-emerald-500/90 text-slate-950'}">
+                ${p.type === 'digital' ? '⚡ Entrega Digital' : '📦 Rastreio Físico'}
+              </span>
+            </div>
+
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-[11px] mb-1" style="color: var(--text-secondary);">
+                  <span>${p.category}</span>
+                  <span class="text-emerald-400 font-semibold">Lucro: ${formatBRL(profit)}</span>
+                </div>
+                <h3 class="font-bold text-sm leading-snug line-clamp-2 mb-2">${p.name}</h3>
+                <div class="text-[11px] px-2.5 py-1 rounded-lg border mb-3" style="background: var(--bg-elevated); border-color: var(--border-subtle); color: var(--text-secondary);">
+                  📊 Comparativo: <strong style="color: var(--text-primary);">${p.marketRef}</strong>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between mb-3">
+                  <div>
+                    <span class="text-xl font-extrabold">${formatBRL(p.price)}</span>
+                    <span class="block text-[11px] text-emerald-400">ou ${formatBRL(p.price * 0.95)} no PIX</span>
+                  </div>
+                </div>
+                <button onclick="addToCart(${p.id})" class="w-full btn-gradient py-2.5 rounded-xl text-xs font-bold shadow">
+                  + Adicionar ao Carrinho
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function addToCart(id) {
+      const prod = products.find(p => p.id === id);
+      const existing = cart.find(item => item.id === id);
+      if (existing) existing.qty++;
+      else cart.push({ ...prod, qty: 1 });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function changeQty(id, delta) {
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById("couponInput").value.trim().toUpperCase();
+      const msg = document.getElementById("couponMsg");
+      if (code === "NEXUS10" || code === "BEMVINDO15") {
+        appliedCoupon = code === "NEXUS10" ? 0.10 : 0.15;
+        msg.textContent = `Cupom ${code} aplicado (${appliedCoupon * 100}% OFF)!`;
+        msg.classList.remove("hidden");
+      } else {
+        appliedCoupon = null;
+        msg.textContent = "Cupom inválido. Tente NEXUS10.";
+        msg.classList.remove("hidden");
+      }
+      updateCartUI();
+    }
+
+    function getCartTotals() {
+      const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+      const hasPhysical = cart.some(i => i.type === "physical");
+      const shipping = (!hasPhysical || subtotal === 0 || subtotal >= 199) ? 0 : 19.90;
+      const discount = appliedCoupon ? subtotal * appliedCoupon : 0;
+      const total = Math.max(0, subtotal + shipping - discount);
+      return { subtotal, shipping, discount, total };
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((acc, i) => acc + i.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+
+      const container = document.getElementById("cartItems");
+      if (cart.length === 0) {
+        container.innerHTML = `<p class="text-center text-xs py-12" style="color: var(--text-secondary);">Seu carrinho está vazio. Escolha produtos auditados no catálogo!</p>`;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="p-3 rounded-2xl border flex items-center gap-3" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+            <img src="${item.image}" class="w-14 h-14 rounded-xl object-cover shrink-0" />
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-bold truncate">${item.name}</p>
+              <p class="text-xs text-emerald-400 font-semibold">${formatBRL(item.price)}</p>
+              <div class="flex items-center gap-2 mt-1.5">
+                <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded-lg border text-xs font-bold" style="border-color: var(--border-subtle);">-</button>
+                <span class="text-xs font-bold">${item.qty}</span>
+                <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded-lg border text-xs font-bold" style="border-color: var(--border-subtle);">+</button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      const { subtotal, shipping, discount, total } = getCartTotals();
+      document.getElementById("cartSubtotal").textContent = formatBRL(subtotal);
+      document.getElementById("cartShipping").textContent = shipping === 0 ? "Grátis" : formatBRL(shipping);
+      if (discount > 0) {
+        document.getElementById("discountRow").classList.remove("hidden");
+        document.getElementById("cartDiscount").textContent = `- ${formatBRL(discount)}`;
+      } else {
+        document.getElementById("discountRow").classList.add("hidden");
+      }
+      document.getElementById("cartTotal").textContent = formatBRL(total);
+    }
+
+    function toggleCart(open) {
+      document.getElementById("cartDrawer").classList.toggle("hidden", !open);
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove("hidden");
+      el.classList.add("flex");
+      if (id === "ordersModal") renderOrders();
+      if (id === "splitModal") renderSplitPanel();
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.add("hidden");
+      el.classList.remove("flex");
+    }
+
+    function openCheckout() {
+      if (cart.length === 0) return alert("Adicione pelo menos um produto ao carrinho.");
+      toggleCart(false);
+      selectPayMethod("PIX");
+      openModal("checkoutModal");
+    }
+
+    function selectPayMethod(method) {
+      selectedPayMethod = method;
+      const { total } = getCartTotals();
+      const finalVal = method === "PIX" ? total * 0.95 : total;
+      document.getElementById("checkoutFinalAmount").textContent = formatBRL(finalVal);
+
+      document.getElementById("payPixBtn").className = method === "PIX"
+        ? "p-3 rounded-xl border text-left text-xs font-bold border-emerald-500 bg-emerald-500/10"
+        : "p-3 rounded-xl border text-left text-xs font-bold opacity-70";
+      document.getElementById("payCardBtn").className = method === "CARD"
+        ? "p-3 rounded-xl border text-left text-xs font-bold border-indigo-500 bg-indigo-500/10"
+        : "p-3 rounded-xl border text-left text-xs font-bold opacity-70";
+      document.getElementById("pixBox").classList.toggle("hidden", method !== "PIX");
+    }
+
+    function copyPixKey() {
+      navigator.clipboard.writeText(creatorPixKey);
+      alert("Chave PIX copiada: " + creatorPixKey);
+    }
+
+    function confirmOrder() {
+      const { total } = getCartTotals();
+      const finalPaid = selectedPayMethod === "PIX" ? total * 0.95 : total;
+      const orderId = "NX-" + Math.floor(1002 + Math.random() * 8999);
+      const customer = document.getElementById("custName").value || "Cliente Nexus";
+
+      let totalSupplierCost = 0;
+      cart.forEach(item => {
+        totalSupplierCost += item.supplierCost * item.qty;
+      });
+      const creatorProfit = Math.max(0, finalPaid - totalSupplierCost);
+
+      // Registrar Split Automático
+      splitHistory.unshift({
+        orderId,
+        item: cart.map(i => `${i.qty}x ${i.name}`).join(", "),
+        gross: finalPaid,
+        supplierPaid: totalSupplierCost,
+        supplierName: cart[0].supplierName,
+        creatorProfit,
+        txId: "PIX-SPLIT-" + Math.floor(100000 + Math.random() * 900000)
+      });
+
+      const hasPhysical = cart.some(i => i.type === "physical");
+      const hasDigital = cart.some(i => i.type === "digital");
+
+      orders.unshift({
+        id: orderId,
+        date: "Agora mesmo",
+        customer,
+        total: finalPaid,
+        method: selectedPayMethod === "PIX" ? "PIX Instantâneo (-5%)" : "Cartão de Crédito",
+        status: "Pagamento Aprovado • Entrega Liberada",
+        carrier: hasPhysical ? cart.find(i => i.type === "physical").carrier : "Nuvem Digital Nexus",
+        tracking: hasPhysical ? "BR" + Math.floor(100000000 + Math.random() * 899999999) + "BR" : "LICENCA-ATIVADA",
+        items: cart.map(i => `${i.qty}x ${i.name}`),
+        hasDigital,
+        carrierNotes: hasPhysical
+          ? "Etiqueta emitida automaticamente e enviada à transportadora."
+          : "Download e chave de acesso liberados imediatamente."
+      });
+
+      document.getElementById("orderBadge").textContent = orders.length;
+      cart = [];
+      appliedCoupon = null;
+      updateCartUI();
+      renderSplitPanel();
+      closeModal("checkoutModal");
+      openModal("ordersModal");
+    }
+
+    function renderOrders() {
+      const list = document.getElementById("ordersList");
+      list.innerHTML = orders.map(o => `
+        <div class="p-4 rounded-2xl border space-y-2.5" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="font-extrabold text-sm">Pedido ${o.id} <span class="text-xs font-normal opacity-70">(${o.date})</span></span>
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">${o.status}</span>
+          </div>
+          <p class="text-xs"><strong>Itens:</strong> ${o.items.join(" • ")}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs p-3 rounded-xl border" style="background: var(--bg-base); border-color: var(--border-subtle);">
+            <div><strong>Transportadora / Canal:</strong> ${o.carrier}</div>
+            <div><strong>Código / Protocolo:</strong> <span class="font-mono text-cyan-400">${o.tracking}</span></div>
+            <div class="sm:col-span-2 opacity-80">📌 ${o.carrierNotes}</div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            ${o.hasDigital ? `<button onclick="alert('Download iniciado! Arquivo e licença autenticados com sucesso.')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-500 text-slate-950">⬇️ Baixar Produto Digital</button>` : ""}
+            <button onclick="closeModal('ordersModal'); openModal('aiModal'); contactCarrier('atraso', '${o.id}');" class="px-3 py-1.5 rounded-xl text-xs font-bold border" style="border-color: var(--border-subtle);">
+              🤖 Acionar Transportadora com IA
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateCreatorPix(val) {
+      if (val.trim()) {
+        creatorPixKey = val.trim();
+        document.getElementById("checkoutPixKeyDisplay").textContent = creatorPixKey;
+      }
+    }
+
+    function renderSplitPanel() {
+      const gross = splitHistory.reduce((a, b) => a + b.gross, 0);
+      const sup = splitHistory.reduce((a, b) => a + b.supplierPaid, 0);
+      const prof = splitHistory.reduce((a, b) => a + b.creatorProfit, 0);
+
+      document.getElementById("splitGrossTotal").textContent = formatBRL(gross);
+      document.getElementById("splitSupplierTotal").textContent = formatBRL(sup);
+      document.getElementById("splitCreatorTotal").textContent = formatBRL(prof);
+      document.getElementById("heroCreatorProfit").textContent = formatBRL(prof);
+      document.getElementById("heroSupplierPaid").textContent = formatBRL(sup);
+
+      document.getElementById("splitLedger").innerHTML = splitHistory.map(s => `
+        <div class="p-3.5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-2" style="background: var(--bg-elevated); border-color: var(--border-subtle);">
+          <div>
+            <p class="font-bold">${s.orderId} — ${s.item}</p>
+            <p class="opacity-75 mt-0.5">Fornecedor (${s.supplierName}): <span class="text-cyan-400 font-semibold">${formatBRL(s.supplierPaid)}</span> • ID: ${s.txId}</p>
+          </div>
+          <div class="text-left sm:text-right shrink-0">
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-extrabold">
+              +${formatBRL(s.creatorProfit)} Criador
+            </span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function simulateSplitSale() {
+      const randomProd = products[Math.floor(Math.random() * products.length)];
+      const orderId = "NX-" + Math.floor(2000 + Math.random() * 7999);
+      const profit = randomProd.price - randomProd.supplierCost;
+      splitHistory.unshift({
+        orderId,
+        item: `1x ${randomProd.name}`,
+        gross: randomProd.price,
+        supplierPaid: randomProd.supplierCost,
+        supplierName: randomProd.supplierName,
+        creatorProfit: profit,
+        txId: "PIX-SPLIT-" + Math.floor(100000 + Math.random() * 900000)
+      });
+      renderSplitPanel();
+    }
+
+    // AI & LOGISTICS FUNCTIONS
+    function appendAiMsg(sender, html) {
+      const box = document.getElementById("aiChatBox");
+      const div = document.createElement("div");
+      div.className = "p-3.5 rounded-2xl border";
+      div.style.background = sender === "Você" ? "var(--bg-surface)" : "var(--bg-elevated)";
+      div.style.borderColor = "var(--border-subtle)";
+      div.innerHTML = `<strong class="${sender === 'Você' ? 'text-indigo-400' : 'text-cyan-400'}">${sender}:</strong> ${html}`;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function runPriceAudit() {
+      appendAiMsg("Nexus AI", `
+        ✅ <strong>Auditoria de Preços Concluída em Tempo Real:</strong><br>
+        • <strong>Edifier W820NB Plus:</strong> R$ 499,00 (100% alinhado à Loja Oficial Edifier).<br>
+        • <strong>Huawei Watch Fit 5:</strong> R$ 779,90 (dentro da faixa R$ 770–R$ 882 do KaBuM!).<br>
+        • <strong>Logitech G915 X &amp; Lift Vertical:</strong> R$ 1.349,90 e R$ 341,90 (batendo com Amazon Brasil).<br>
+        • <strong>Kit Principia Skincare:</strong> R$ 139,90 (competitivo frente às farmácias online).<br>
+        Todos os produtos estão com margem saudável protegida no Split PIX!
+      `);
+    }
+
+    function contactCarrier(type, customOrderId) {
+      const targetOrder = orders.find(o => o.id === customOrderId) || orders[0];
+      const protocol = "LOG-" + Math.floor(100000 + Math.random() * 900000);
+      if (type === "atraso") {
+        targetOrder.status = `Prioridade Logística (${protocol})`;
+        targetOrder.carrierNotes = `Transportadora ${targetOrder.carrier} acionada pela IA. Protocolo ${protocol} aberto com entrega expressa priorizada.`;
+        appendAiMsg("Nexus AI", `
+          🚚 <strong>Contato Direto Realizado com ${targetOrder.carrier}:</strong><br>
+          • Pedido: <strong>${targetOrder.id}</strong> (Rastreio: <code>${targetOrder.tracking}</code>)<br>
+          • Protocolo Oficial Gerado: <strong class="text-amber-400">${protocol}</strong><br>
+          • Retorno da Transportadora: <em>"Carga localizada no centro de triagem e colocada em rota prioritária de entrega nas próximas 24h."</em>
+        `);
+      } else {
+        appendAiMsg("Nexus AI", `
+          🔄 <strong>Central de Troca, Reembolso &amp; Acesso Digital:</strong><br>
+          • Para produtos digitais, reenviamos o link de download e chave de licença instantaneamente sem custo.<br>
+          • Para produtos físicos (Pedido <strong>${targetOrder.id}</strong>), geramos código de postagem reversa gratuita pela ${targetOrder.carrier} (Protocolo <strong>${protocol}</strong>) ou estorno integral via PIX.
+        `);
+      }
+    }
+
+    function autoAddProduct() {
+      const newId = products.length + 1;
+      const newProd = {
+        id: newId,
+        name: "Webcam 4K Ultra HD Autofoco + Microfone Duplo",
+        category: "Eletrônicos",
+        type: "physical",
+        price: 289.90,
+        supplierCost: 185.00,
+        supplierName: "TechVision Distribuidora",
+        carrier: "Loggi Air",
+        marketRef: "Varejo: R$ 299,00",
+        image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?auto=format&fit=crop&w=600&q=80",
+        badge: "Novo via IA"
+      };
+      products.unshift(newProd);
+      renderProducts();
+      appendAiMsg("Nexus AI", `➕ Produto <strong>"${newProd.name}"</strong> criado, precificado em <strong>R$ 289,90</strong> (Lucro de R$ 104,90 no Split) e publicado na vitrine!`);
+    }
+
+    function sendAiMessage() {
+      const input = document.getElementById("aiUserInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendAiMsg("Você", text);
+      input.value = "";
+
+      const lower = text.toLowerCase();
+      setTimeout(() => {
+        if (lower.includes("preço") || lower.includes("auditar") || lower.includes("loja")) {
+          runPriceAudit();
+        } else if (lower.includes("entrega") || lower.includes("transportadora") || lower.includes("atraso") || lower.includes("rastreio")) {
+          contactCarrier("atraso");
+        } else if (lower.includes("troca") || lower.includes("reembolso") || lower.includes("devol")) {
+          contactCarrier("reembolso");
+        } else {
+          appendAiMsg("Nexus AI", `Entendido! Já verifiquei o sistema da <strong>Nexus Mart Pro</strong>: seus pagamentos estão roteados para a chave PIX <code>${creatorPixKey}</code> com split automático para fornecedores e rastreamento ativo em todos os pedidos.`);
+        }
+      }, 400);
+    }
+
+    // INIT
+    renderProducts();
+    updateCartUI();
+    renderSplitPanel();
+  </script>
+</body>
+</html>
